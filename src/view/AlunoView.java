@@ -10,11 +10,12 @@ public class AlunoView {
     
     AlunoController ac = new AlunoController();
     
-    Aluno aluno = new Aluno();
+    
     
     private void run(){
         int opcao = -1;
         do {
+            Aluno aluno = new Aluno();
             System.out.print(
               "======= Alunos ======="
             + "\n1-Cadastrar"
@@ -39,7 +40,7 @@ public class AlunoView {
                     break;
                 case 2 :
                     for (Aluno a : ac.findAll()){
-                        System.out.println(aluno.toString());
+                        System.out.println(a.toString());
                     }
                     break;
                 case 3 :
@@ -50,6 +51,7 @@ public class AlunoView {
                     }else {
                         System.out.println(aluno.toString());
                     }
+                    break;
                 case 4 :
                     System.out.print("Digite a Matrícula: "); 
                     aluno = ac.findById(sc.nextInt());
