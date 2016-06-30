@@ -10,24 +10,25 @@ public class AlunoView {
     
     AlunoController ac = new AlunoController();
     
+    Aluno aluno = new Aluno();
+    
     private void run(){
         int opcao = -1;
         do {
             System.out.print(
-              "==== Alunos ===="
+              "======= Alunos ======="
             + "\n1-Cadastrar"
             + "\n2-Listar Tudo"
             + "\n3-Buscar por Matricula"
             + "\n4-Editar aluno"
             + "\n5-Excluir aluno"
             + "\n0-Sair"
-            + "================="
-            + "\nOpção: ");
+            + "\n======================"
+            + "\n\nOpção: ");
        
             opcao = sc.nextInt();
             switch(opcao){
                 case 1:
-                    Aluno aluno = new Aluno();
                     System.out.print("Matricula: ");
                     aluno.setMatricula(sc.nextInt());
                     System.out.print("Nome: ");
@@ -38,21 +39,41 @@ public class AlunoView {
                     break;
                 case 2 :
                     for (Aluno a : ac.findAll()){
-                        System.out.println(a.toString());
+                        System.out.println(aluno.toString());
                     }
                     break;
                 case 3 :
                     System.out.print("Digite a Matrícula: "); 
-                    aluno = null;
-                    aluno = aluno.listarPorMatricula(sc.nextInt());
+                    aluno = ac.findById(sc.nextInt());
                     if (aluno == null){
                         System.out.println("Matrícula não encontrada");
                     }else {
                         System.out.println(aluno.toString());
                     }
                 case 4 :
-                    
-                 
+                    System.out.print("Digite a Matrícula: "); 
+                    aluno = ac.findById(sc.nextInt());
+                    if (aluno == null){
+                        System.out.println("Matrícula não encontrada");
+                    }else {
+                        //System.out.println(aluno.toString());
+                        System.out.print("Nome: ");
+                        aluno.setNome(sc.next());
+                        System.out.print("Idade: ");
+                        aluno.setIdade(sc.nextInt());
+                        ac.update(aluno);
+                    }
+                    break;
+                case 5 :
+                    System.out.print("Digite a Matrícula: "); 
+                    aluno = ac.findById(sc.nextInt());
+                    if (aluno == null){
+                        System.out.println("Matrícula não encontrada");
+                    }else {
+                        System.out.println(aluno.toString());
+                        ac.delete(aluno);
+                    }
+                    break;
                     
             }
         } while(opcao != 0);

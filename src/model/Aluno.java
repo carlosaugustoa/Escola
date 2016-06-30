@@ -30,9 +30,11 @@ public class Aluno {
         this.idade = idade;
     }
 
-    public Aluno listarPorMatricula(int nextInt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public String toString() {
+        return "Aluno{" + "matricula=" + matricula + ", nome=" + nome + ", idade=" + idade + '}';
     }
     
     
+
 }
