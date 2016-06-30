@@ -29,6 +29,10 @@ public class Aluno {
     public void setIdade(int idade) {
         this.idade = idade;
     }
+
+    public Aluno listarPorMatricula(int nextInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

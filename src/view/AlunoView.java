@@ -41,6 +41,19 @@ public class AlunoView {
                         System.out.println(a.toString());
                     }
                     break;
+                case 3 :
+                    System.out.print("Digite a Matrícula: "); 
+                    aluno = null;
+                    aluno = aluno.listarPorMatricula(sc.nextInt());
+                    if (aluno == null){
+                        System.out.println("Matrícula não encontrada");
+                    }else {
+                        System.out.println(aluno.toString());
+                    }
+                case 4 :
+                    
+                 
+                    
             }
         } while(opcao != 0);
     
