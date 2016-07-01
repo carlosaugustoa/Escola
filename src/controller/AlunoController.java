@@ -4,7 +4,6 @@ import model.Aluno;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class AlunoController {
 
     private List<Aluno> alunos;
