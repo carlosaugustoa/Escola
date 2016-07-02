@@ -5,38 +5,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProfessorController {
-    
+  
     private List<Professor> professores;
     
     public ProfessorController(){
-        this.professores = new ArrayList<>();
+        this.professores = new ArrayList();
     }
     
-    public void create(Professor professor){
+    public void cadastrar(Professor professor){
         professores.add(professor);
     }
     
     public List<Professor> findAll(){
-        return professores;
+       return professores;
     } 
     
-    public Professor findById(int matricula){
-        Professor professor = new Professor();
-        for (Professor a : professores){
-            if (a.getMatricula() == matricula){
-                professor = a;
-                break;
-                
+    public Professor findById(int id){
+        for (Professor professor : professores){
+            if (professor.getMatricula() == id){
+               return professor;
             }
         }
-        return professor;
+        return null;
     }
     
     public void update(Professor professor){
-        for (Professor a : professores){
-            if (a.getMatricula() == professor.getMatricula()){
-                a.setNome(professor.getNome());
-                a.setIdade(professor.getIdade());
+        for (Professor prof : professores){
+            if (professor.getMatricula() == prof.getMatricula()){
+                prof = professor;
                 break;
             }
         }
@@ -46,10 +42,5 @@ public class ProfessorController {
         professores.remove(professor);
     }
     
-
-
-
-
-
 
 }

@@ -8,21 +8,51 @@ public class ProfessorView {
 
     Scanner sc = new Scanner(System.in);
     
-    ProfessorController ac = new ProfessorController();
+    ProfessorController pc = new ProfessorController();
+   
+    public ProfessorView(){}
     
+    private void cadastrar(int opcao){
+        Professor professor = new Professor();
+        System.out.print("Maticula: ");
+        professor.setMatricula(sc.nextInt());
+        System.out.print("Nome: ");
+        professor.setNome(sc.next());
+        System.out.print("Idade: ");
+        professor.setIdade(sc.nextInt());
+        System.out.print("Disciplina: ");
+        professor.setDisciplina(sc.next());
+    }    
     
+    private void listarTudo(){
+        for(Professor professor : pc.findAll()){
+            System.out.println(professor.toString());
+        }
+    }
     
-    private void run(){
+    private void remover(){
+        Professor professor = new Professor();
+        System.out.print("Matricula: ");
+        professor = pc.findById(sc.nextInt());
+        if (professor == null){
+            System.out.println("Professor não cadastrado");
+        } else {
+            pc.delete(professor);
+        }
+    }
+    
+      
+    public void run(){
         int opcao = -1;
         do {
-            Professor professor = new Professor();
+  //          Professor professor = new Professor();
             System.out.print(
-              "======Professores====="
+              "======Professore======"
             + "\n1-Cadastrar"
             + "\n2-Listar Tudo"
             + "\n3-Buscar por Matricula"
-            + "\n4-Editar aluno"
-            + "\n5-Excluir aluno"
+            + "\n4-Editar Professor"
+            + "\n5-Excluir Professor"
             + "\n0-Sair"
             + "\n======================"
             + "\n\nOpção: ");
@@ -30,73 +60,29 @@ public class ProfessorView {
             opcao = sc.nextInt();
             switch(opcao){
                 case 1:
-                    System.out.print("Matricula: ");
-                    professor.setMatricula(sc.nextInt());
-                    System.out.print("Nome: ");
-                    professor.setNome(sc.next());
-                    System.out.print("Idade: ");
-                    professor.setIdade(sc.nextInt());
-                    System.out.print("Disciplina: ");
-                    professor.setDisciplina(sc.next());
-                    ac.create(professor);
+                    cadastrar();
                     break;
                 case 2 :
-                    for (Professor a : ac.findAll()){
-                        System.out.println(a.toString());
-                    }
-                    break;
-                case 3 :
-                    System.out.print("Digite a Matrícula: "); 
-                    professor = ac.findById(sc.nextInt());
-                    if (professor == null){
-                        System.out.println("Matrícula não encontrada");
-                    }else {
-                        System.out.println(professor.toString());
-                    }
-                    break;
-                case 4 :
-                    System.out.print("Digite a Matrícula: "); 
-                    professor = ac.findById(sc.nextInt());
-                    if (professor == null){
-                        System.out.println("Matrícula não encontrada");
-                    }else {
-                        System.out.print("Nome: ");
-                        professor.setNome(sc.next());
-                        System.out.print("Idade: ");
-                        professor.setIdade(sc.nextInt());
-                        System.out.print("Disciplina: ");
-                        professor.setDisciplina(sc.next());
-                        ac.update(professor);
-                    }
+                    listarTudo();
                     break;
                 case 5 :
-                    System.out.print("Digite a Matrícula: "); 
-                    professor = ac.findById(sc.nextInt());
-                    if (professor == null){
-                        System.out.println("Matrícula não encontrada");
-                    }else {
-                        System.out.println(professor.toString());
-                        ac.delete(professor);
-                    }
+                    remover();
                     break;
                     
+  
             }
         } while(opcao != 0);
     
     }
     
-    public ProfessorView() {}
-    
-    public static void main(String[] args){
-        new ProfessorView().run();
+//    public static void main(String[] args){
+//        new ProfessorView().run();
+//    }
+
+    private void cadastrar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
-    
-    
-    
-    
-    
-    
+
+        
     
 }
